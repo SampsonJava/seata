@@ -38,6 +38,7 @@ public class GlobalTransactionalInterceptorParser implements InterfaceParser {
     private final Set<String> methodsToProxy = new HashSet<>();
 
     /**
+     * 解析接口到代理
      * @param target
      * @return
      * @throws Exception
@@ -73,6 +74,7 @@ public class GlobalTransactionalInterceptorParser implements InterfaceParser {
                 }
                 Method[] methods = clazz.getMethods();
                 for (Method method : methods) {
+                    // 获取加了该注解的方法
                     trxAnno = method.getAnnotation(GlobalTransactional.class);
                     if (trxAnno != null) {
                         methodsToProxy.add(method.getName());
